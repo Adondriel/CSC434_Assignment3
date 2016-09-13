@@ -1,1 +1,1 @@
-# CSC434_Assignment3
+Assignment 2 github repo, this should always contain the most up to date version of my website.

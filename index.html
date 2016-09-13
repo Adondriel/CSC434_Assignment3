@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <title>Adam Pine | Home</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Responsive HTML5 Website landing Page for Developers">
+    <meta name="author" content="3rd Wave Media">
+
+    <meta name="modifier" content="Adam Pine">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <!-- github acitivity css -->
+    <link rel="stylesheet" href="assets/plugins/github-activity/dist/github-activity-0.1.0.min.css">
+    <link rel="stylesheet" href="assets/plugins/github-activity/dist/octicons/octions.min.css">
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="myApp.js"></script>
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-App="myApp">
+    <!-- ******HEADER****** -->
+    <header class="header">
+        <div class="container">
+            <!-- <img class="profile-image img-responsive pull-left" src="assets/images/profile.png" alt="James Lee" /> -->
+            <div class="profile-content pull-left">
+                <h1 class="name">Adam Pine</h1>
+                <h2 class="desc">Junior Developer</h2>
+                <ul class="social list-inline">
+                    <!--<li><a href="https://twitter.com/Adondriel"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://plus.google.com/u/0/112128782691491148212/about"><i class="fa fa-google-plus"></i></a></li>
+<li><a href="http://www.linkedin.com/in/adampine95"><i class="fa fa-linkedin"></i></a></li>-->
+                    <li><a href="https://github.com/Adondriel"><i class="fa fa-github-alt"></i></a></li>
+                </ul>
+            </div>
+            <!--//profile-->
+        </div>
+        <!--//container-->
+    </header>
+    <!--//header-->
+
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-12 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">About Me</h2>
+                        <div class="content">
+                            <p>This is my website that will contain all of my CSC 434 Web Programming Assignments. This site uses Angular, in order to prevent myself from having to copy and paste a million links. This site is actually a striped down version of my main site <a href="http://adampine.me">Adampine.me</a></p>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                <!--//section-->
+
+                <section class="latest section">
+                    <div class="section-inner">
+                        <h2 class="heading">Latest Projects</h2>
+                        <div ng-controller="myController" class="content">
+                            <div class="item featured text-center">
+                                <h3 class="title"><a ng-href="{{projectList.mainProject.url}}" target="_blank">{{projectList.mainProject.title}}</a></h3>
+                                <p class="summary">{{projectList.mainProject.summary}}</p>
+                                <div class="featured-image center">
+                                    <a ng-href="{{projectList.mainProject.url}}" target="_blank">
+                                        <img class="img-responsive project-image" syle="display: block;margin: auto;width: 40%;" ng-src="{{projectList.mainProject.img}}" alt="{{projectList.mainProject.title}}" />
+                                    </a>
+                                    <!--<div class="ribbon">
+                                        <div class="text">New</div>
+                                    </div>-->
+                                </div>
+                                <div class="desc text-left">
+                                    <p>{{projectList.mainProject.desc}}</p>
+                                </div>
+                                <div ng-repeat="link in projectList.mainProject.links">
+                                    <p ng-if="link.url"> <a class="btn btn-cta-secondary" ng-href="{{link.url}}" target="_blank"><i class="fa fa-thumbs-o-up"></i> {{link.urlWords}}</a></p>
+                                </div>
+                                <!--//desc-->
+                            </div>
+                            <!--//item-->
+
+                            <div ng-repeat="project in projectList.projects" class="item row">
+                                <hr class="divider" />
+                                <a class="col-md-4 col-sm-4 col-xs-12">
+                                    <img ng-if="project.img" style="border:1px solid #B1B1B1" class="img-responsive project-image" ng-src="{{project.img}}" alt="{{project.title}}" />
+                                </a>
+                                <div class="desc col-md-8 col-sm-8 col-xs-12">
+                                    <h3 class="title"><a href="{{project.url}}" target="_blank">{{project.title}}</a></h3>
+                                    <p>{{project.desc}}</p>
+                                    <div ng-repeat="link in project.links">
+                                        <p ng-if="link.url"> <a class="btn btn-cta-secondary" ng-href="{{link.url}}" target="_blank"><i class="fa fa-thumbs-o-up"></i> {{link.urlWords}}</a></p>
+                                    </div>
+                                </div>
+                                <!--//desc-->
+                            </div>
+                            <!--//item-->
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                <!--//section-->
+
+                <section class="github section">
+                    <div class="section-inner">
+                        <h2 class="heading">My GitHub Activity</h2>
+                        <!--//Usage: http://caseyscarborough.com/projects/github-activity/ -->
+                        <div id="ghfeed" class="ghfeed">
+                        </div>
+                        <!--//ghfeed-->
+
+                    </div>
+                    <!--//secton-inner-->
+                </section>
+                <!--//section-->
+            </div>
+            <!--//primary-->
+
+
+            <!--//secondary-->
+        </div>
+        <!--//row-->
+    </div>
+    <!--//masonry-->
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            <small class="copyright">&copy; Adam Pine 2015</small>
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
+
+    <!-- Javascript -->
+
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="assets/plugins/github-activity/dist/mustache/mustache.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/github-activity/dist/github-activity-0.1.0.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="myApp.js"></script>
+</body>
+
+</html>
