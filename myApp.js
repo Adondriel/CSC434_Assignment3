@@ -3,25 +3,41 @@ var app = angular.module('myApp', [])
     .controller('myController', ['$scope', function ($scope) {
         $scope.projectList = {
             "mainProject": {
-                "title": "Assignment 2",
-                "desc": "This project required me to create a home page, that would index my further projects(this page), a page that contains examples of html, and a page that contains examples of different PHP code, with source code.",
+                "title": "Assignment 3",
+                "desc": "This project required me to create a php page, with classes and different data types and way to manipulate that data.",
                 "img": "assets/images/html5.jpg",
                 "links": [
                     {
-                        "url": "html_examples.html",
-                        "urlWords": "HTML Examples"
+                        "url": "assignment3.php",
+                        "urlWords": "PHP Classes Page"
                     },
                     {
-                        "url": "php_examples.php",
-                        "urlWords": "PHP Examples"
-                    },
-                    {
-                        "url": "https://github.com/Adondriel/CSC434_Assignment2",
+                        "url": "https://github.com/Adondriel/CSC434_Assignment3",
                         "urlWords": "Github Repository"
                     }
                 ]
             },
             "projects": [
+                {
+                    "title": "Assignment 2",
+                    "desc": "This project required me to create a home page, that would index my further projects(this page), a page that contains examples of html, and a page that contains examples of different PHP code, with source code.",
+                    "img": "assets/images/html5.jpg",
+                    "links": [
+                        {
+                            "url": "html_examples.html",
+                            "urlWords": "HTML Examples"
+                        },
+                        {
+                            "url": "php_examples.php",
+                            "urlWords": "PHP Examples"
+                        },
+                        {
+                            "url": "https://github.com/Adondriel/CSC434_Assignment2",
+                            "urlWords": "Github Repository"
+                        }
+                    ]
+
+                },
                 {
                     "title": "Assignment 1",
                     "img": "assets/images/webserver.png",
