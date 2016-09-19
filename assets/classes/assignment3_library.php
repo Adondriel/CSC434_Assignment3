@@ -1,28 +1,4 @@
 <?php
-    function generateRandomTwoDimArray(){
-        $twodimArray = array();       
-        for ($x = 0; $x <= 10; $x++) {
-            $availPokemonTypes = array("blastoise","vulpix");
-            $chosenPokemonType = $availPokemonTypes[mt_rand(0,1)];
-            $myPokemon;
-            if ($chosenPokemonType == "blastoise"){
-                $myPokemon = new Blastoise();
-            }elseif($chosenPokemonType == "vulpix"){
-                $myPokemon = new Vulpix();            
-            }
-            $myPokemon->chooseRandomAttack();
-            $twodimArray[] = $myPokemon;
-        }
-        for ($row = 0; $row < 4; $row++) {
-  echo "<p><b>Row number $row</b></p>";
-  echo "<ul>";
-  for ($col = 0; $col < 3; $col++) {
-    echo "<li>".$twodimArray[$row][$col]."</li>";
-  }
-  echo "</ul>";
-}
-    }
-
     class Pokemon {
         //Integers
         private $damage;
@@ -37,90 +13,90 @@
         //Array
         private $attacks;
         
-        function get_damage(){
-            return $damage;
+        function getDamage(){
+            return $this->damage;
         }
         
-        function get_maxHealth(){
-            return $maxHealth;
+        function getMaxHealth(){
+            return $this->maxHealth;
         }
         
-        function get_currentHealth(){
-            return $currentHealth;
+        function getCurrentHealth(){
+            return $this->currentHealth;
         }
         
-        function get_experience(){
-            return $experience;   
+        function getExperience(){
+            return $this->experience;   
         }
         
-        function get_name(){
-            return $name;
+        function getName(){
+            return $this->name;
         }
         
-        function get_currentAttack(){
-            return $currentAttack;
+        function getCurrentAttack(){
+            return $this->currentAttack;
         }
         
-        function get_attacks(){
-            return $attacks;
+        function getAttacks(){
+            return $this->attacks;
         }
         
-        function set_damage($dmg){
+        function setDamage($dmg){
             if (gettype($dmg) == "integer"){
-                $damage = $dmg;
+                $this->damage = $dmg;
                 return true;
             }
             return false;
         }
 
-        function set_maxHealth($value){
+        function setMaxHealth($value){
             if (gettype($value) == "integer"){
-                $maxHealth = $value;
+                $this->maxHealth = $value;
                 return true;
             }else{
                 return false;
             }
         }
         
-        function set_currentHealth($value){
+        function setCurrentHealth($value){
             if (gettype($value) == "integer"){
-                $currentHealth = $value;
+                $this->currentHealth = $value;
                 return true;
             }else{
                 return false;
             }
         }
         
-        function set_experience($value){
+        function setExperience($value){
             if (gettype($value) == "double"){
-                $experience = value;
+                $this->experience = $value;
                 return true;
             }else{
                 return false;
             }
         }
         
-        function set_name($value){
+        function setName($value){
             if (gettype($value) == "string"){
-                $name = $value;
+                $this->name = $value;
                 return true;
             }else{
                 return false;
             }
         }
         
-        function set_currentAttack($value){
+        function setCurrentAttack($value){
             if (gettype($value) == "string"){
-                $currentAttack = $value;
+                $this->currentAttack = $value;
                 return true;
             }else{
                 return false;
             }            
         }
         
-        function set_attacks($value){
+        function setAttacks($value){
             if (gettype($value) == "array"){
-                $attacks = $value;
+                $this->attacks = $value;
                 return true;
             }else{
                 return false;
@@ -129,12 +105,29 @@
         
         function chooseRandomAttack(){
             $randIndex = mt_rand(0,3);
-            if (gettype($attacks) == "array"){
-                $currentAttack = $attacks[$randIndex];
+            if (isset($this->attacks)){
+                $this->currentAttack = $this->attacks[$randIndex];
                 return true;
             }else{
                 return false;
             }
+        }
+        
+        function randomizeValues(){            
+            //Random HP value, as integer.
+            $randHP = mt_rand(0,$this->maxHealth);
+            //range of 0.0 to 100.0
+            $max = 100.0;
+            $min = 0.0;
+            $range = $max-$min;
+            //get random float val.
+            $num = $min + $range * mt_rand(0, 32767)/32767;    
+            //round float to 2 decimals
+            $randEXP = round($num, 2);
+            
+            
+            $this->currentHealth = $randHP;
+            $this->experience = $randEXP;
         }
     }
 
@@ -147,12 +140,12 @@
         
         public $moves = array("Bubble", "waterPulse", "hydroPump", "withdraw");
         function __construct(){
-            $this->set_damage(83);
-            $this->set_maxHealth(790);
-            $this->set_currentHealth(790);
-            $this->set_experience(10.15);
-            $this->set_name("Blastoise");
-            $this->set_attacks($moves);
+            $this->setDamage(83);
+            $this->setMaxHealth(790);
+            $this->setCurrentHealth(790);
+            $this->setExperience(10.15);
+            $this->setName("Blastoise");
+            $this->setAttacks($this->moves);
         }        
     }
 
@@ -165,12 +158,12 @@
         
         public $moves = array("Ember", "Fire Spin", "Will O Wisp", "Inferno");
         function __construct(){
-            $this->set_damage(41);
-            $this->set_maxHealth(380);
-            $this->set_currentHealth(380);
-            $this->set_experience(5.15);
-            $this->set_name("Vulpix");
-            $this->set_attacks($moves);
+            $this->setDamage(41);
+            $this->setMaxHealth(380);
+            $this->setCurrentHealth(380);
+            $this->setExperience(5.15);
+            $this->setName("Vulpix");
+            $this->setAttacks($this->moves);
         }
     }
 ?>

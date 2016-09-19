@@ -48,6 +48,8 @@
                     <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                     <li><a href="html_examples.html"><i class="fa fa-code" aria-hidden="true"></i> HTML Examples</a></li>
                     <li class="active"><a href="#"><i class="fa fa-code" aria-hidden="true"></i> PHP Examples</a></li>
+                    <li><a href="assignment3.php"><i class="fa fa-code" aria-hidden="true"></i> Assignment 3</a></li>
+
                 </ul>
             </div>
             <!--/.nav-collapse -->
