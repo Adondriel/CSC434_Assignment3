@@ -87,15 +87,6 @@
 
             <div>
                 <table class="table table-striped table-hover ">
-                    <!--<thead>
-    <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 5</th>
-    </tr>
-</thead>-->
                     <tbody>
                         <?php 
                             //this would be even more fun to do with angular, rather than php lol. Angular is so nice when trying to create tables from an object.

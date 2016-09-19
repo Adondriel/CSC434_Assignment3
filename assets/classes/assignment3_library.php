@@ -133,6 +133,9 @@
 
     class Blastoise extends Pokemon{
         //Attacks specific to Blastoise.
+        //Instead of creating the entire "attacks" object hierarchy,
+        //I am just using strings to represent the objects that each of these attacks represents, just consider these strings to be "attack" objects.
+        //such that "Bubble" extends "Attack". 
         public $bubble = "Bubble";
         public $waterPulse = "Water Pulse";
         public $hydroPump = "Hydro Pump";
