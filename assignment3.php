@@ -109,6 +109,7 @@
         </nav>
 
         <div class="container">
+            <div class="starter-template">
                 <p>Amazon Items:</p>
                 <table class="table table-striped table-hover ">
                     <tbody>
@@ -209,6 +210,7 @@
                 </table>
 
             </div>
+                </div>
         </div>
         <!-- /.container -->
 
