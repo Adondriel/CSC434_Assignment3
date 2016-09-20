@@ -1,5 +1,6 @@
 <?php
-    include("assets/classes/assignment3_library.php");
+    include("assets/classes/pokemon_lib.php");
+    include("assets/classes/amazon_lib.php");
 
         function generateRandomTwoDimArray($rows = 5, $cols = 5){
             $twodimArray = array();
@@ -17,6 +18,28 @@
                     $myPokemon->chooseRandomAttack();
                     $myPokemon->randomizeValues();
                     $rowArray[] = $myPokemon;
+                }
+                $twodimArray[] = $rowArray;
+            }
+            //print_r($twodimArray);
+            return $twodimArray;
+        }
+
+        function generateRandomTwoDimAmazonArray($rows = 5, $cols = 5){
+            $twodimArray = array();
+            for ($r = 0; $r <= $rows; $r++){
+                $rowArray = array();
+                for ($c = 0; $c <= $cols; $c++) {
+                    $availTypes = array("tv","computer");
+                    $chosenType = $availTypes[mt_rand(0,1)];
+                    $myItem;
+                    if ($chosenType == "tv"){
+                        $myItem = new TV();
+                    }elseif($chosenType == "computer"){
+                        $myItem = new Computer();            
+                    }
+                    $myItem->RandomizeParentVars();
+                    $rowArray[] = $myItem;
                 }
                 $twodimArray[] = $rowArray;
             }
@@ -84,7 +107,51 @@
         </nav>
 
         <div class="container">
+                <p>Amazon Items:</p>
+                <table class="table table-striped table-hover ">
+                    <tbody>
+                        <?php 
+                            //this would be even more fun to do with angular, rather than php lol. Angular is so nice when trying to create tables from an object.
+                            $rowCount = 5;
+                            $colCount = 5;
+                            $twoDimArr = generateRandomTwoDimAmazonArray($rowCount, $colCount);
+                            for ($r = 0; $r < $rowCount; $r++){
+                                echo("<tr>");
+                                for ($c = 0; $c < $colCount; $c++) {
+                                    echo("<td>");
+                                    echo("Name: ".$twoDimArr[$r][$c]->getName()."<br />");                                                                        
+                                    echo("Condition: ".$twoDimArr[$r][$c]->getCondition()."<br />");
+                                    echo("Price: ".$twoDimArr[$r][$c]->getPrice()."<br />");
+                                    echo("Stock: ".$twoDimArr[$r][$c]->getStock()."<br />");     
+                                    echo("Manufacturer: ".$twoDimArr[$r][$c]->getManufacturer()."<br />");     
 
+                                    if ($twoDimArr[$r][$c] instanceof TV){
+                                        echo("Screen Size: ".$twoDimArr[$r][$c]->getScreenSize()."<br />");   
+                                        echo("Resolution: ".$twoDimArr[$r][$c]->getResolution()."<br />");                                            
+                                    }elseif($twoDimArr[$r][$c] instanceof Computer){
+                                        echo("Ram: ".$twoDimArr[$r][$c]->getRam()."<br />");                                            
+                                        echo("CPU Manufacturer: ".$twoDimArr[$r][$c]->getCPUManu()."<br />");                                            
+                                        echo("Graphics Card: ".$twoDimArr[$r][$c]->getGCard()."<br />");
+                                    }                                              
+                                    echo("Tags:<br /><ul>");
+                                    foreach($twoDimArr[$r][$c]->getTags() as $atk){
+                                        echo("<li>");
+                                        echo("    ".$atk);
+                                        echo("</li>");
+                                    }
+                                    echo("</td>");
+                                }
+                                echo("</tr>");
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            
+            
+            
+            
+            
+            <p>This is the first version I made, which is wrong, because the pokemon don't have separate getters.</p>
             <div>
                 <table class="table table-striped table-hover ">
                     <tbody>
@@ -97,11 +164,13 @@
                                 echo("<tr>");
                                 for ($c = 0; $c < $colCount; $c++) {
                                     echo("<td>");
-                                    echo("Name: ".$twoDimPokeArr[$r][$c]->getName()."<br />");                                                                        echo("Damage: ".$twoDimPokeArr[$r][$c]->getDamage()."<br />");
+                                    echo("Name: ".$twoDimPokeArr[$r][$c]->getName()."<br />");                                                                        
+                                    echo("Damage: ".$twoDimPokeArr[$r][$c]->getDamage()."<br />");
                                     echo("Max Health: ".$twoDimPokeArr[$r][$c]->getMaxHealth()."<br />");
                                     echo("Current Health: ".$twoDimPokeArr[$r][$c]->getCurrentHealth()."<br />");
                                     echo("Experience: ".$twoDimPokeArr[$r][$c]->getExperience()."<br />");
-                                    echo("Current Attack: ".$twoDimPokeArr[$r][$c]->getCurrentAttack()."<br />");                                                                  echo("Available Attacks:<br /><ul>");
+                                    echo("Current Attack: ".$twoDimPokeArr[$r][$c]->getCurrentAttack()."<br />");                                                                  
+                                    echo("Available Attacks:<br /><ul>");
                                     foreach($twoDimPokeArr[$r][$c]->getAttacks() as $atk){
                                         echo("<li>");
                                         echo("    ".$atk);
