@@ -9,7 +9,7 @@ var app = angular.module('myApp', [])
                 "links": [
                     {
                         "url": "assignment3.php",
-                        "urlWords": "PHP Classes Page"
+                        "urlWords": "Assignment 3 Page"
                     },
                     {
                         "url": "https://github.com/Adondriel/CSC434_Assignment3",

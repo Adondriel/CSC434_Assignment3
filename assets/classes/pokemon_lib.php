@@ -1,6 +1,9 @@
 <?php
 /**
     Pokemon class, the main class. This contains the shared vars, that all pokemon share.
+    These classes are just here for historical reference, these should not be graded unless you really want to... for some reason.
+    Please grade using the Amazon_lib.php instead.
+    Author: Adam Pine
 */
     class Pokemon {
         //Integers

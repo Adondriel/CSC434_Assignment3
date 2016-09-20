@@ -1,7 +1,9 @@
 <?php
+    //include the lib files that contain the classes.
+    //Author: Adam Pine
     include("assets/classes/pokemon_lib.php");
     include("assets/classes/amazon_lib.php");
-
+        //generate random two dim array of pokemon... old version, here for reference.
         function generateRandomTwoDimArray($rows = 5, $cols = 5){
             $twodimArray = array();
             for ($r = 0; $r <= $rows; $r++){
@@ -24,7 +26,7 @@
             //print_r($twodimArray);
             return $twodimArray;
         }
-
+        //generate random two dim array of Amazon Items, for use below.
         function generateRandomTwoDimAmazonArray($rows = 5, $cols = 5){
             $twodimArray = array();
             for ($r = 0; $r <= $rows; $r++){
@@ -116,15 +118,18 @@
                             $colCount = 5;
                             $twoDimArr = generateRandomTwoDimAmazonArray($rowCount, $colCount);
                             for ($r = 0; $r < $rowCount; $r++){
+                                //start a row.
                                 echo("<tr>");
                                 for ($c = 0; $c < $colCount; $c++) {
+                                    //create a data entry in said row.
                                     echo("<td>");
                                     echo("Name: ".$twoDimArr[$r][$c]->getName()."<br />");                                                                        
                                     echo("Condition: ".$twoDimArr[$r][$c]->getCondition()."<br />");
                                     echo("Price: ".$twoDimArr[$r][$c]->getPrice()."<br />");
                                     echo("Stock: ".$twoDimArr[$r][$c]->getStock()."<br />");     
                                     echo("Manufacturer: ".$twoDimArr[$r][$c]->getManufacturer()."<br />");     
-
+                                    //check for the type of object, so I can tell which properties to print out.
+                                    //Could also have used Reflection here, but that seems a bit complex for this project lol.
                                     if ($twoDimArr[$r][$c] instanceof TV){
                                         echo("Screen Size: ".$twoDimArr[$r][$c]->getScreenSize()."<br />");   
                                         echo("Resolution: ".$twoDimArr[$r][$c]->getResolution()."<br />");                                            
@@ -132,22 +137,41 @@
                                         echo("Ram: ".$twoDimArr[$r][$c]->getRam()."<br />");                                            
                                         echo("CPU Manufacturer: ".$twoDimArr[$r][$c]->getCPUManu()."<br />");                                            
                                         echo("Graphics Card: ".$twoDimArr[$r][$c]->getGCard()."<br />");
-                                    }                                              
+                                    }    
+                                    //create a list of the tags, so they are formatted correctly.
                                     echo("Tags:<br /><ul>");
                                     foreach($twoDimArr[$r][$c]->getTags() as $atk){
-                                        echo("<li>");
-                                        echo("    ".$atk);
-                                        echo("</li>");
+                                        echo("<li>".$atk."</li>");
                                     }
+                                    //end said data entry.
                                     echo("</td>");
                                 }
+                                //end the row.
                                 echo("</tr>");
                             }
                         ?>
                     </tbody>
                 </table>
             
-            
+                            <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Source Code for this page:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h1>Click this link to visit the Github Directory for this assignment:  <a href="https://github.com/Adondriel/CSC434_Assignment3">https://github.com/Adondriel/CSC434_Assignment3</a></h1>
+                        <h3>Files Used, find in github, or find them below:</h3>
+                        <ul>
+                            <li>assignment3.php</li>
+                            <li>assets/classes/amazon_lib.php</li>
+                            <li>assets/classes/pokemon_lib.php (historical, old version of this project.)</li>
+                        </ul>
+                        <div style="text-align:left;">
+                            <p><?php show_source('assets/classes/amazon_lib.php'); ?></p>
+                            <p><?php show_source('assignment3.php'); ?></p>
+                            <p><?php show_source('assets/classes/pokemon_lib.php'); ?></p>
+                        </div>
+                    </div>
+                </div>
             
             
             
